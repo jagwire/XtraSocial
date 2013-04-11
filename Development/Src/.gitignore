@@ -1,0 +1,22 @@
+#Exclude the directories that are more or less the same for all UDK incarnations
+
+Core/
+Engine/
+ExoEditor/
+GameFramework/
+GFxUI/
+GFxUIEditor/
+IpDrv/
+MyMod/
+OnlineSubsystemGameCenter/
+OnlineSubsystemPC/
+OnlineSubsystemSteamworks/
+SubstanceAir/
+SubstanceAirEd/
+SwordEditor/
+UDKBase/
+UnrealEd/
+UTEditor/
+UTGame/
+UTGameContent/
+WinDrv/

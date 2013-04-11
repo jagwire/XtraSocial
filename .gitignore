@@ -1,0 +1,5 @@
+#Exclude the "heavy" directories with large files...
+
+Binaries/
+Engine/
+UDKGame/
