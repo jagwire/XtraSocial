@@ -1,0 +1,12 @@
+Autosaves/
+Build/
+Cloud/
+Config/
+Flash/
+Localization/
+Logs/
+Movies/
+*.txt
+ProjectTemplates/
+Script/
+Splash/
