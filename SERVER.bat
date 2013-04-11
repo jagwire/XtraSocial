@@ -1,0 +1,1 @@
+C:\UDK\UDK-XtraSocial\Binaries\Win32\UDK.exe server HUBMap?Goalscore=0?timeLimit=0?Game=XtraSocial.XtraSocialGame -log
