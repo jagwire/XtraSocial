@@ -1,0 +1,6 @@
+IPhone/
+Mac/
+Mobile/
+UnrealFrontend.DefaultProfiles/
+*.ini
+!DefaultEngine.ini
