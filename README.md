@@ -21,3 +21,12 @@ INITIALIZE IT AS A GIT REPOSITORY
 PULL FROM XtraSocial ON GITHUB
 > git pull https://github.com/jagwire/XtraSocial.git
 
+
+===================
+TESTING MULTIPLAYER
+===================
+Included are two windows batch files
+> SERVER.bat
+> CLIENT.bat
+
+First run the SERVER.bat file then when you see the game started successfully message, start the CLIENT.bat file
