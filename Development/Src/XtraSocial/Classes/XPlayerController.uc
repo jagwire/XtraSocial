@@ -3,6 +3,7 @@ class XPlayerController extends UTPlayerController;
 var vector PlayerViewOffset;
 var vector currentCameraLocation, desiredCameraLocation;
 var rotator currentCameraRotation;
+var bool useFirstPerson;
 
 simulated function postBeginPlay() {
     super.postBeginPlay();
@@ -12,11 +13,13 @@ simulated function postBeginPlay() {
 simulated event getPlayerViewPoint(out vector outLocation, out Rotator outRotation) {
     super.getPlayerViewPoint(outLocation, outRotation);
 
-    if(pawn != none) {
-        outLocation = currentCameraLocation;
-        outRotation = rotator((outLocation * vect(1, 1, 0)) - outLocation);
+    if(!useFirstPerson) {
+        if(pawn != none) {
+            outLocation = currentCameraLocation;
+            outRotation = rotator((outLocation * vect(1, 1, 0)) - outLocation);
+        }
+        currentCameraRotation = outRotation;
     }
-    currentCameraRotation = outRotation;
 }
 
 function Rotator getAdjustedAimFor(Weapon w, vector startFireLoc) {
@@ -34,30 +37,32 @@ function PlayerTick(float deltaTime) {
 
 state PlayerWalking {
     function playerMove(float deltaTime) {
-        local Vector X, Y, Z, altAcceleration;
-        local rotator oldRotation;
-
-        getAxes(currentCameraRotation, X, Y, Z);
-
-        altAcceleration = PlayerInput.aForward*Z + PlayerInput.aStrafe*Y;
-        altAcceleration.Z = 0;
-        altAcceleration = Pawn.accelRate * normal(altAcceleration);
-        oldRotation = rotation;
-        
-        updateRotation(deltaTime);
-
-        if(ROLE < ROLE_Authority) {
-            replicateMove(deltaTime, altAcceleration, DCLICK_None, oldRotation - rotation);
-        }
-        else {
-            processMove(deltaTime, altAcceleration, DCLICK_None, oldRotation - rotation);
-        }
+        super.playerMove(deltaTime);
+//        local Vector X, Y, Z, altAcceleration;
+//        local rotator oldRotation;
+//
+//        getAxes(currentCameraRotation, X, Y, Z);
+//
+//        //altAcceleration = PlayerInput.aForward*Z + PlayerInput.aStrafe*Y;
+//        //altAcceleration.Z = 0;
+//        //altAcceleration = Pawn.accelRate * normal(altAcceleration);
+//        //oldRotation = rotation;
+//        
+//        updateRotation(deltaTime);
+//
+//        if(ROLE < ROLE_Authority) {
+//            replicateMove(deltaTime, altAcceleration, DCLICK_None, oldRotation - rotation);
+//        }
+//        else {
+//            processMove(deltaTime, altAcceleration, DCLICK_None, oldRotation - rotation);
+//        }
 
     }
 }
 
 defaultproperties
 {
-    PlayerViewOffset=(X=385, Y=0, Z=1024)
+    useFirstPerson=true
+    PlayerViewOffset=(X=-10000, Y=0, Z=10000)
 }
 

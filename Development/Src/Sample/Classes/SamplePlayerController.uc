@@ -89,8 +89,8 @@ state PlayerWalking {
      
         GetAxes(currentCameraRotation, X, Y, Z);
      
-        altAcceleration = PlayerInput.aForward*Z + PlayerInput.aStrafe*Y;
-        altAcceleration.Z = 0;
+       altAcceleration = PlayerInput.aForward*Z + PlayerInput.aStrafe*Y;
+       altAcceleration.Z = 0;
         altAcceleration = Pawn.AccelRate * normal(altAcceleration);  
         oldRotation = rotation;
         updateRotation(deltaTime); 
